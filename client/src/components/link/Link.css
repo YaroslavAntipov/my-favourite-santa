@@ -1,0 +1,31 @@
+.list-container {
+  display: flex;
+  width: 70%;
+}
+
+.wisher-item {
+  margin: 5px 10px;
+  min-height: 30px;
+  min-width: 250px;
+  flex-grow: 1;
+  border-radius: 5px;
+  color: rgb(63, 125, 146);
+  font-family: 'Raleway', sans-serif;
+  background: lightcyan;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.wisher-item-dark {
+  margin: 5px 10px;
+  min-height: 30px;
+  min-width: 250px;
+  flex-grow: 1;
+  border-radius: 5px;
+  color: rgb(52, 71, 77);
+  font-family: 'Raleway', sans-serif;
+  background: rgb(178, 185, 185);
+  padding: 10px 15px;
+  font-size: 17px;
+}

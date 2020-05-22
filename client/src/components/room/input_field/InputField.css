@@ -1,0 +1,27 @@
+.primary-input {
+  margin: 5px 10px;
+  min-height: 30px;
+  max-height: 35px;
+  min-width: 250px;
+  flex-grow: 1;
+  border-radius: 5px;
+  border: 1px solid lightblue;
+  color: rgb(63, 125, 146);
+  font-family: "Raleway", sans-serif;
+  background: lightcyan;
+  padding: 10px 15px;
+  font-size: 15px;
+}
+
+.primary-input:hover {
+  border: 1px solid lightgrey;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+}
+
+.remove-icon {
+  color: rgb(97, 13, 13);
+}

@@ -1,11 +1,28 @@
 {
-  "name": "node-example",
-  "version": "0.0.1",
-  "dependencies": {
-    "express": "2.5.x"
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm-run-all --parallel build-client build-server",
+    "start-dev-server": "nodemon ./bin/www",
+    "start-dev-client": "cd client && npm start",
+    "build-server": "npm install && node ./bin/www",
+    "build-client": "cd client && npm run build"
   },
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "pg": "^7.15.1",
+    "npm-run-all": "^4.1.5",
+    "pg-promise": "^10.3.1",
+    "sequelize": "^5.21.3",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
