@@ -15,10 +15,12 @@ const Users = database.define(
       type: Sequelize.STRING
     },
     is_santa: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
     },
     have_santa: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
     },
     createdat: {
       field: "createdat",
@@ -49,7 +51,10 @@ Users.createNew = async ({ name, wishes }, newRoomId) => {
       roomid: newRoomId,
       is_santa: false
     };
-    return await Users.create(newUser);
+    const user = new Users(newUser);
+    await user.save();
+
+    return user;
   } catch (error) {
     //TODO error handling
   }
@@ -68,6 +73,7 @@ Users.changeIsSantaAndFindWisher = async ({ username, roomid }) => {
     const santaUser = await Users.findOne({
       where: { username, roomid }
     });
+
     if (santaUser.is_santa) {
       return { error: "Already Santa" };
     }
@@ -80,6 +86,7 @@ Users.changeIsSantaAndFindWisher = async ({ username, roomid }) => {
         username: {
           [Op.ne]: username
         },
+        roomid,
         have_santa: false
       }
     });

@@ -103,3 +103,11 @@ body {
   .max-width-320 {
     max-width: 320px;
   }
+
+  .loader-page {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }

@@ -30,8 +30,12 @@ Rooms.associate = models => {
 
 Rooms.createNew = async newRoomId => {
   try {
-    return await Rooms.create({ roomid: newRoomId });
-  } catch (error) {
+    const room = new Rooms({ roomid: newRoomId });
+    
+    await room.save();
+
+    return room;
+    } catch (error) {
     //TODO error handling
   }
 };

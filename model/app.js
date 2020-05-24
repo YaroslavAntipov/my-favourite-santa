@@ -19,11 +19,11 @@ app.post("/api/generate", async (req, res) => {
   const newRoomId = uuidv1();
   const usersData = req.body;
 
-  const { roomid } = await Rooms.createNew(newRoomId);
+  await Rooms.createNew(newRoomId);
 
-  Promise.all(usersData.map(async user => await Users.createNew(user, roomid)));
+  await Promise.all(usersData.map(async user => await Users.createNew(user, newRoomId)));
 
-  res.status(200).json({ roomid, users: usersData });
+  res.status(200).json({ roomid: newRoomId, users: usersData });
 });
 
 app.get("/api/users", async (req, res) => {
