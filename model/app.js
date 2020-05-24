@@ -13,8 +13,7 @@ app.set("view engine", "jade");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.post("/api/generate", async (req, res) => {
   const newRoomId = uuidv1();
@@ -46,7 +45,7 @@ app.post("/api/become_santa", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+    res.sendFile(path.join(`${__dirname}/../build/index.html`));
 });
 
 // catch 404 and forward to error handler
