@@ -2,8 +2,8 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
-var Rooms = require("./model/rooms");
-var Users = require("./model/users");
+var Rooms = require("./rooms");
+var Users = require("./users");
 var uuidv1 = require("uuid/v1");
 var app = express();
 
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, "build")));
 
 app.post("/api/generate", async (req, res) => {
   const newRoomId = uuidv1();
@@ -46,7 +46,7 @@ app.post("/api/become_santa", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 // catch 404 and forward to error handler
@@ -64,4 +64,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-module.exports = app;
+const port = process.env.PORT || 5000;
+app.listen(port);

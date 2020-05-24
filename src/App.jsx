@@ -5,9 +5,9 @@ import Room from './components/room';
 import RoomLink from './components/room_link';
 import Link from './components/link';
 import SecretRoom from './components/secret_room';
+import './App.css';
 
 const App = (props) => {
-  console.log('props', props)
   return (
     <Router>
       <Switch>

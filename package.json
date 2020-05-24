@@ -2,27 +2,50 @@
   "name": "server",
   "version": "0.0.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "scripts": {
-    "start": "npm-run-all --parallel build-client build-server",
-    "start-dev-server": "nodemon ./bin/www",
-    "start-dev-client": "cd client && npm start",
-    "build-server": "npm install && node ./bin/www",
-    "build-client": "cd client && npm run build"
+    "start": "npm run build-server",
+    "heroku-postbuild": "npm run build-client",
+    "dev": "concurrently 'npm run start-dev-server' 'npm run start-dev-client'",
+    "start-dev-server": "nodemon ./model/app",
+    "start-dev-client": "react-scripts start",
+    "build-server": "npm install && node ./model/app",
+    "build-client": "react-scripts build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "pg": "^7.15.1",
     "npm-run-all": "^4.1.5",
+    "pg": "^7.15.1",
     "pg-promise": "^10.3.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
     "sequelize": "^5.21.3",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
